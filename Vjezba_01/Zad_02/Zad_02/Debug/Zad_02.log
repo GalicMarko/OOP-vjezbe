@@ -1,0 +1,3 @@
+﻿  Zad_02.cpp
+C:\Users\X\Desktop\Vjezbe iz objektnog\Vjezba_01\Zad_02\Zad_02\Zad_02.cpp(90,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Zad_02.vcxproj -> C:\Users\X\Desktop\Vjezbe iz objektnog\Vjezba_01\Zad_02\Debug\Zad_02.exe
