@@ -1,4 +1,4 @@
-/*Koristeæi funkcije iz prvog zadatka unijeti dva vektora i formirati novi vektor koji
+/*KoristeÃ¦i funkcije iz prvog zadatka unijeti dva vektora i formirati novi vektor koji
 se sastoji od elemenata iz prvog vektora koji nisu u drugom vektoru*/
 #include <iostream>
 #include <vector>
