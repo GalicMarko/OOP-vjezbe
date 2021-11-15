@@ -1,4 +1,4 @@
-/*Napisati funkciju u za uklanjanje elementa iz vektora sa što manje operacija.
+/*Napisati funkciju u za uklanjanje elementa iz vektora sa Å¡to manje operacija.
 Poredak elemenata u vektoru nije bitan.*/
 #include <iostream>
 #include <vector>
