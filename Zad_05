@@ -1,5 +1,5 @@
 //Napisati funkciju koja broji koliko pojavljivanja danog podstringa 
-//ima u stringu koristeæi funkcije standardne biblioteke.
+//ima u stringu koristeÃ¦i funkcije standardne biblioteke.
 #include <iostream>
 #include <vector>
 #include <string>
