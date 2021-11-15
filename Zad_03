@@ -1,5 +1,5 @@
-/*Koristeæi STL funkcije sortirajte vektor, ubacite 0 ispred najmanjeg elementa, te
-sumu svih elemenata iza najveæeg elementa.*/
+/*KoristeÃ¦i STL funkcije sortirajte vektor, ubacite 0 ispred najmanjeg elementa, te
+sumu svih elemenata iza najveÃ¦eg elementa.*/
 #include <iostream>
 #include <vector>
 #include <string>
