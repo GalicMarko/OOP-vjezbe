@@ -1,0 +1,154 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class Point
+{
+	public:
+		double x, y, z;
+
+	public:
+		void setMemberValue(Point& p);
+		void setPseudorandomValue(Point& p, double min, double max);
+		void getMemberValue(Point& p);
+		double twoDDistance(Point a, Point b);
+		double triDDistance(Point a, Point b);
+};
+
+class Gun
+{
+	public:
+		Point position;
+		int clipSize, currentAmmo;
+
+	public:
+		void shoot(Point p, int clip, int ammo);
+		void reload(Point p, int clip, int ammo);
+};
+
+class Target
+{
+	public:
+		Point A, C;
+		int hit;
+};
+
+void Point::setMemberValue(Point& p)
+{
+		cout << "X: ";
+		cin >> p.x;
+		cout << "Y: ";
+		cin >> p.y;
+		cout << "Z: ";
+		cin >> p.z;
+}
+
+void Point::setPseudorandomValue(Point& p, double min, double max)
+{
+	p.x = fmod(rand(), max) + min;
+	p.y = fmod(rand(), max) + min;
+	p.z = fmod(rand(), max) + min;
+
+	cout << endl << p.x << " " << p.y << " " << p.z << endl << endl;
+}
+
+void Point::getMemberValue(Point& p)
+{
+	cout << endl << p.x << " " << p.y << " " << p.z << endl << endl;
+}
+
+double Point::twoDDistance(Point a, Point b)
+{
+	double distance = sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y));
+
+	return distance;
+}
+
+double Point::triDDistance(Point a, Point b)
+{
+	double distance = sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y) + (b.z - a.z)*(b.z - a.z));
+
+	return distance;
+}
+
+
+void Gun::shoot(Point p, int clip, int ammo)
+{
+	if (ammo > 0)
+		ammo--;
+	else
+		reload(p, clip, ammo);
+}
+
+void Gun::reload(Point p, int clip, int ammo)
+{
+	if (ammo == 0)
+		ammo = clip;
+}
+
+
+
+int main()
+{
+	srand(double(time(NULL)));
+	
+	int n;
+	int numberOfHits = 0;
+	double min = 1;
+	double max = 10;
+
+	cout << "How many targets do you wish to create: ";
+	cin >> n;
+	cout << endl;
+
+	Gun g;
+	Point p;
+	int clip = 6;
+	int ammo = clip;
+
+	cout << "Gun position coordinates: ";
+	p.setPseudorandomValue(p, min, max);
+
+	g.position = p;
+	g.clipSize = clip;
+	g.currentAmmo = ammo;
+
+	Target arrayOfTargets[10];
+
+	for (int i = 0; i < n; ++i)
+	{
+		Target t;
+		Point a, c;
+
+		cout << i + 1 << ". target point A coordinates: ";
+		a.setPseudorandomValue(a, min, max);
+		cout << i + 1 << ". target point C coordinates: ";
+		c.setPseudorandomValue(c, min, max);
+
+		t.A = a;
+		t.C = c;
+		
+		arrayOfTargets[i] = t;
+	}
+
+	for (int i = 0; i < g.clipSize; ++i)
+	{
+		Point bulletHole;
+
+		cout << "Bullet hole coordinates: ";
+		bulletHole.setPseudorandomValue(bulletHole, min, max);
+
+		if (((bulletHole.x = g.position.x) && (bulletHole.y = g.position.y)) || ((bulletHole.x = g.position.x) && (bulletHole.z = g.position.z)) || ((bulletHole.y = g.position.y) && (bulletHole.z = g.position.y)))
+		{
+			for (int i = 0; i < n; ++i)
+			{
+				if ((bulletHole.x <= sqrt((arrayOfTargets[i].C.x - arrayOfTargets[i].A.x)*(arrayOfTargets[i].C.x - arrayOfTargets[i].A.x))) && ((bulletHole.y <= sqrt((arrayOfTargets[i].C.y - arrayOfTargets[i].A.y)*(arrayOfTargets[i].C.y - arrayOfTargets[i].A.y))) && ((bulletHole.z <= sqrt((arrayOfTargets[i].C.z - arrayOfTargets[i].A.z)*(arrayOfTargets[i].C.z - arrayOfTargets[i].A.z))))))
+					numberOfHits++;
+			}
+		}
+	}
+
+	cout << "Number of hits: " << numberOfHits << endl;
+}
