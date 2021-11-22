@@ -10,6 +10,7 @@ class Point
 		double x, y, z;
 
 	public:
+		void setValueToZero(Point& p);
 		void setMemberValue(Point& p);
 		void setPseudorandomValue(Point& p, double min, double max);
 		void getMemberValue(Point& p);
@@ -34,6 +35,13 @@ class Target
 		Point A, C;
 		int hit;
 };
+
+void Point::setValueToZero(Point& p)
+{
+	p.x = 0;
+	p.y = 0;
+	p.z = 0;
+}
 
 void Point::setMemberValue(Point& p)
 {
