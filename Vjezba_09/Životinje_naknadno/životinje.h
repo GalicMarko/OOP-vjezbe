@@ -17,11 +17,11 @@ class Insect : public Animal
 	int legs;
 	string species;
 
-public:
-	int numberOfLegs();
-	string animalSpecies();
-	void setLegs(int n);
-	void setSpecies(string s);
+	public:
+		int numberOfLegs();
+		string animalSpecies();
+		void setLegs(int n);
+		void setSpecies(string s);
 };
 
 class Spider : public Animal 
