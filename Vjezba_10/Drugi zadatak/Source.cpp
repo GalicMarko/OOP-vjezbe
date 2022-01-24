@@ -30,7 +30,10 @@ template <class T> class Stack
 };
 
 // initialise top to -1(default constructor)
-template <class T> Stack<T>::Stack() { top = -1; }
+template <class T> Stack<T>::Stack()
+{ 
+	top = -1;
+}
 
 // add element element k to stack
 template <class T> void Stack<T>::push(T k)
